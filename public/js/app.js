@@ -17,26 +17,25 @@ $(document).ready(function () {
 
     const form = document.querySelector('form');
     const search = document.querySelector('input');
-    const temperature = document.querySelector('.temperature');
-    const address = document.querySelector('.address');
-    const error = document.querySelector('.error');
+    const message1 = document.querySelector('.message-1');
+    const message2 = document.querySelector('.message-2');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        message1.textContent = 'Loading...';
+        message2.textContent = '';
 
         const url = 'http://localhost:3003/weather?address=' + search.value;
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 if (data.error !== undefined) {
-                    error.innerHTML = 'Error: ' + data.error;
-                    temperature.innerHTML = '';
-                    address.innerHTML = '';
+                    message1.textContent = 'Error: ' + data.error;
+                    message2.textContent = '';
                     return;
                 }
-                error.innerHTML = '';
-                temperature.innerHTML = 'Current temperature: ' + data.forecast.temperature + ' C';
-                address.innerHTML = 'Address: ' + data.location;
+                message1.textContent = 'Address: ' + data.location;
+                message2.textContent = 'Current temperature: ' + data.forecast.temperature + ' C';
             })
             .catch(e => {
                 console.log('Error: ' + e);
