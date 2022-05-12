@@ -18,7 +18,7 @@ hbs.registerPartials(appPartialsPath)
 
 app.get('/', (req, res, next) => {
     res.render('index.hbs', {
-        title: 'Index Hbs',
+        title: 'Weather Hbs',
         name: process.env.npm_package_author_name,
     });
 });

@@ -21,7 +21,7 @@ class Mock {
 
     static get(utility, key) {
         const data = Mock.load(utility);
-        const mock = (data.length >= 0) ? JSON.parse(data) : {};
+        const mock = (data.length > 0) ? JSON.parse(data) : {};
         return mock[key];
     }
 
@@ -32,7 +32,7 @@ class Mock {
             fs.writeFileSync(mockFilename, JSON.stringify(mock), {encoding: 'utf8', flag: 'w'});
         }
         const data = Mock.load(utility);
-        mock = (data.length >= 0) ? JSON.parse(data) : {};
+        mock = (data.length > 0) ? JSON.parse(data) : {};
         mock[key] = value;
         fs.writeFileSync(mockFilename, JSON.stringify(mock), {encoding: 'utf8', flag: 'w'});
     }

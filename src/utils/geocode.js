@@ -4,7 +4,8 @@ const Mock = require('./mock');
 
 const geocode = (address, callback) => {
 
-    const json = Mock.get('geocode', address);
+    //const json = Mock.get('geocode', address);
+    const json = null;
     if (json) {
         const data = {
             latitude: json.features[0].center[1],
@@ -21,6 +22,12 @@ const geocode = (address, callback) => {
     fetch(url)
         .then(response => response.json())
         .then(json => {
+            console.log(json.features.length);
+            if (json.features.length === 0) {
+                throw 'Location not found. Provide a valid address';
+                //callback('Location not found. Provide a valid address');
+                return
+            }
             Mock.put('geocode', address, json);
             const data = {
                 latitude: json.features[0].center[1],
@@ -29,7 +36,7 @@ const geocode = (address, callback) => {
             }
             callback(undefined, data)
         })
-        .catch(error => callback('Error. Unable to get latitude or longitude for provided address'));
+        .catch(error => callback('Unable to get latitude or longitude for provided address'));
 }
 
 module.exports = geocode;
