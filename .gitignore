@@ -1,3 +1,4 @@
-node_modules
-.idea
 .env
+.idea
+node_modules/
+src/mocks/
