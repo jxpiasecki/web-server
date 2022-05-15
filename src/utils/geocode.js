@@ -28,7 +28,7 @@ const geocode = (address, callback) => {
                 //callback('Location not found. Provide a valid address');
                 return
             }
-            Mock.put('geocode', address, json);
+            //Mock.put('geocode', address, json);
             const data = {
                 latitude: json.features[0].center[1],
                 longitude: json.features[0].center[0],
