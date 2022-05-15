@@ -34,8 +34,8 @@ $(document).ready(function () {
                     message2.textContent = '';
                     return;
                 }
-                message1.textContent = 'Address: ' + data.location;
-                message2.textContent = 'Current temperature: ' + data.forecast.temperature + ' C';
+                message1.textContent = data.location + '(' + data.coordinates.latitude + ' ' + data.coordinates.longitude + ')'
+                message2.textContent = data.forecast;
             })
             .catch(e => {
                 console.log('Error: ' + e);

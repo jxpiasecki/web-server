@@ -5,14 +5,19 @@ const forecast = (latitude, longitude, callback) => {
     fetch(url)
         .then(response => response.json())
         .then(json => {
-            const data = {
-                temperature: json.current.temperature
+            const forecast = json.current.weather_descriptions[0] + '. '
+                + 'It is currently: ' + json.current.temperature + 'C degrees out. '
+                + 'It feels like: ' + json.current.feelslike + 'C degrees out. '
+                + 'The humidity is: ' + json.current.humidity + '%';
+            const response = {
+                data: json,
+                forecast: forecast
             }
-            callback(undefined, data);
+            callback(undefined, response);
         })
         .catch(error => {
             console.log(error);
-            callback('Error occured');
+            callback('Error occurred');
         });
 }
 
