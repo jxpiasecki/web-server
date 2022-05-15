@@ -22,7 +22,6 @@ const geocode = (address, callback) => {
     fetch(url)
         .then(response => response.json())
         .then(json => {
-            console.log(json.features.length);
             if (json.features.length === 0) {
                 throw 'Location not found. Provide a valid address';
                 //callback('Location not found. Provide a valid address');
