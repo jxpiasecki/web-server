@@ -7,7 +7,7 @@ const forecast = require("./utils/forecast");
 const appPublicPath = path.join(__dirname, '..', 'public');
 const appViewsPath = path.join(__dirname, '..', 'templates', 'views');
 const appPartialsPath = path.join(__dirname, '..', 'templates', 'partials');
-const appPort = 3003;
+const appPort = process.env.PORT || 3003;
 
 const app = express();
 app.use(express.static(appPublicPath));

@@ -8,7 +8,7 @@ $(document).ready(function () {
     //     .then(data => console.log('promise', data))
     //     .catch(e => console.log(e));
     //
-    // const url2 = 'http://localhost:3003/weather?address=Boston';
+    // const url2 = '/weather?address=Boston';
     // const fetchAsync = async (url) => {
     //     const response = await fetch(url);
     //     return await response.json();
@@ -25,7 +25,7 @@ $(document).ready(function () {
         message1.textContent = 'Loading...';
         message2.textContent = '';
 
-        const url = 'http://localhost:3003/weather?address=' + search.value;
+        const url = '/weather?address=' + search.value;
         fetch(url)
             .then(response => response.json())
             .then(data => {
